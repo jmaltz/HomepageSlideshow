@@ -5,6 +5,20 @@ td {
 	margin-right: 10px;
 }
 
-.slideshow_submission_field{
+.slideshow-submission-field{
 	float: left;
+}
+
+.gray-background{
+	background-color: #D8D8D8;
+	cursor: pointer;
+}
+
+#images{
+	list-style: none;
+	margin: 0px 0px 10px 0px;
+}
+
+#images > li{
+	margin: 10px 0px 10px 30px;
 }

@@ -11,6 +11,8 @@ global $base_url;
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+
 <script src="<?php echo $base_url ?>/js/jquery-1.8.0.min.js" type="text/javascript"></script>
 <script src="<?php echo $base_url ?>/js/jquery-ui-1.8.23.custom.min.js" type="text/javascript"></script>
 <script src="<?php echo $base_url ?>/js/jquery.timePicker.min.js" type="text/javascript"></script>
