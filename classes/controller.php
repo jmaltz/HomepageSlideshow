@@ -134,7 +134,6 @@ class Controller {
 					{
 						$error = $error . $value; //append the error messages
 					}
-					
 					echo $view->display_record(array(), $error);	
 				}
 				else if($result === FALSE)
@@ -143,7 +142,7 @@ class Controller {
 				}
 				else
 				{
-				//	header('Location: ' . $GLOBALS['base_url']); //note that we're using global scope
+					header('Location: ' . $GLOBALS['base_url']); //note that we're using global scope
 				}
 			}
 		}

@@ -5,30 +5,55 @@ class SlideshowModel {
 
 	public function display_records($records)
 	{
-		$html = '<div>';
-		for($i = 0; $i<count($records); $i++)
-		{	 
-			$current_image = $records[$i];
-			
-			if($i % 3 == 0)
+		for($i = 0; $i < count($records); $i++)
+		{
+			if($records[$i]["expires"] != NULL)
 			{
-				$html .= '<ul class="thumbnails">';
+				$records[$i]["expires"] = str_replace(" ", "T", $records[$i]["expires"]); //format it for the client side
 			}
-	
-			$html .= '<li class="span4">' .
-				'<div class="thumbnail">' .
-				'<a href="edit/' . $current_image["record_id"] . '">' .
-				'<img src="' . $current_image["image_source"] . '" />' .
-				'</a>' .
-				'</div>' .
-				'</li>';
-			if($i % 3 == 2 || $i == count($records) - 1)
-			{
-		 		$html .= '</ul>';
-			}
-		}
-	
-		$html .= '</div>';
+		}		
+
+		$html = '<div id="image-list">'.
+				'<div class="row">'.
+					'<div id="search-bar" class="span12">'.
+						'<span class="search-category" id="search-all">'.
+							'All'.
+						'</span>'.
+						' | '.
+						'<span class="search-category" id="search-featured">'.
+							'Featured'.
+						'</span>'.
+						' | '.	
+						'<span class="search-category" id="search-active">'.
+							'Active'.
+						'</span>'.
+						'<input type="text" class="pull-right span2 search-query" id="title-search" placeholder="Image title"/>'.
+					'</div>'.
+				'</div>'.
+				'<div class="row">' .
+					'<ul id="images">'.	
+					'</ul>'.
+				'</div>'.
+			'</div>'.
+			'<script type="text/template" id="image-template">'.
+				'<div class="thumbnail  
+				<%if(Date.parse(expires) > new Date()){%>'.
+					'unexpired"'.
+				'<%}'.
+				'else{%>'.
+					'expired"'.	
+				'<%}%>'.	
+				'>'.
+					'<a href="edit/<%= record_id %>">'.
+						'<img src="<%= image_source %>"/>'.
+					'</a>'.
+				'</div>'.
+			'</script>'.
+			'<script type="text/javascript" src="'. $GLOBALS['base_url'] . '/js/homepage.js"></script>'.
+			'<script type="text/javascript">'.
+				'model.load(\''.json_encode($records) .'\');'.
+			'</script>';	
+			;
 		return $html;
 	}
 
@@ -40,17 +65,18 @@ class SlideshowModel {
 		{
 			$html .= '<div class="alert alert-error">' . $error. '</div>';	
 		}
+
 		$html .= '<form action="" method="post" class = "form-horizontal" enctype="multipart/form-data" id="slideshow_upload_image">' .
 				'<div class="control-group">' .
 				'<label class="control-label" for="title">Image Title: </label>' .
 				'<div class="controls" id="image_title_controls">' .
-				'<input type="text" name="title" id="image_title" class="slideshow_submission_field" ' . get_value_for_input($record, "title", "Image Title") . '/>' .
+				'<input type="text" name="title" id="image_title" class="slideshow-submission-field" ' . get_value_for_input($record, "title", "Image Title") . '/>' .
 				 '</div>' .
 			 	 '</div>' .
 				'<div class="control-group">' .
 				'<label class="control-label" for="image_alt_text">Alt Text: </label>' .
 				'<div class="controls" id="image_alt_text_controls">' .
-				' <input type="text" id="image_alt_text" class="slideshow_submission_field" name="image_alt_text" ' . get_value_for_input($record, "image_alt_text", "Image Alt Text") . '/>' .
+				' <input type="text" id="image_alt_text" class="slideshow-submission-field" name="image_alt_text" ' . get_value_for_input($record, "image_alt_text", "Image Alt Text") . '/>' .
 				'</div>' .
 				'</div>' .
 				'<div class="control-group">' .
@@ -60,8 +86,9 @@ class SlideshowModel {
 		
 		if(isset($record["link_to"])) //if a link value is passed in, show it
 		{
-			if(strpos($record["link_to"], "http://") === TRUE) //if there is an http:// strip it
+			if(strpos($record["link_to"], "http://") !== FALSE) //if there is an http:// strip it
 			{
+				
 				$html .= 'value="' . substr($record["link_to"], 7) . '"';
 			}
 			else
@@ -98,14 +125,12 @@ class SlideshowModel {
 				'<div class="control-group">' .
 				'<label class="control-label">Expiration Date </label>' .
 				'<div class="controls" id="expiration_date_controls">' .
-				'<input id="datepicker" type="text" name="expiration_date" class="slideshow_submission_field"';
+				'<input id="datepicker" type="text" name="expiration_date" class="slideshow-submission-field"';
 		
 		if(isset($record["expires"]))
 		{
 
 			$html .= 'value="' . date('Y-m-d', strtotime($record['expires'])) . '"';
-		//	$split_date = split(" ", $record["expires"]);
-		//	$html .= 'value="' . convert_datetime_to_date($split_date[0]) . '"';
 		}			
 		$html .= 	 '/>' .
 				'</div>' .
@@ -113,15 +138,13 @@ class SlideshowModel {
 				'<div class="control-group">' .
 				'<label class="control-label">Time</label>' .
 				'<div class="controls" id="expiration_time_controls">'. 
-				'<input id="timepicker" type="text" name="expiration_time" class="slideshow_submission_field"';
+				'<input id="timepicker" type="text" name="expiration_time" class="slideshow-submission-field"';
 		
 
 		if(isset($record["expires"]))
 		{
 				
 			$html .= 'value="' . date('g:i A', strtotime($record['expires'])) . '"';
-			//$split_date = split(" ", $arguments["expires"]);
-			//$html .= 'value="' . datetime_to_am_pm($split_date[1]) . '"';
 		}
 					
 		$html .=	'/>' .
