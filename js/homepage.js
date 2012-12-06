@@ -20,7 +20,7 @@ var model = (function(){
 		}
 	});
 
-	var ImageCollection = Backbone.Collection.extend({
+	var ImageCollection = Backbone.QueryCollection.extend({
 		model: ImageModel	
 	});
 
@@ -135,7 +135,7 @@ var model = (function(){
 		searchByTitle: function(event){
 			if(event.originalEvent.keyCode == 13){ //if its an enter press
 				var title = $(event.currentTarget).val();
-				var matched = allImages.where({'title': title});
+				var matched = allImages.query({'title': {$like: title}});
 				this.filterSelected(matched);		
 			}
 			
