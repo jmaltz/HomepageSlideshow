@@ -21,4 +21,33 @@ td {
 
 #images > li{
 	margin: 10px 0px 10px 30px;
+	line-height: 30px;
+}
+
+#images > li .thumbnail{
+	height: 110px;
+	width: 375px;
+}
+
+#images > li .span2 {
+	margin-left: 10px;
+}
+
+ul .no-style{
+	list-style: none;
+}
+
+.image-thumbnail{
+	height: 110px;
+	width: 190px;
+}
+
+.image-link{
+	color: black;
+	font-size: 12px;
+}
+
+.image-link:hover{
+	text-decoration: none;
+	color: black;
 }

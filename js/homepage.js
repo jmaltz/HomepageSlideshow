@@ -30,12 +30,13 @@ var model = (function(){
 	var ImageView = Backbone.View.extend({
 
 		tagName: 'li',
-		className: 'span4',
+		className: 'span4 image-item',
 	
 		template: _.template($('#image-template').html()),
 
 		render: function(){
 			var html = this.template(this.model.toJSON());
+			console.log($("#image-template"));
 			this.$el.html(html);
 			return this;
 		}

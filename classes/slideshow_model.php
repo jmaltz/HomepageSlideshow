@@ -27,33 +27,20 @@ class SlideshowModel {
 						'<span class="search-category" id="search-active">'.
 							'Active'.
 						'</span>'.
-						'<input type="text" class="pull-right span2 search-query" id="title-search" placeholder="Image title"/>'.
+						'<input type="text" class="pull-right span2 search-query" id="title-search" placeholder="Search title"/>'.
 					'</div>'.
 				'</div>'.
 				'<div class="row">' .
 					'<ul id="images">'.	
 					'</ul>'.
 				'</div>'.
-			'</div>'.
-			'<script type="text/template" id="image-template">'.
-				'<div class="thumbnail  
-				<%if(Date.parse(expires) > new Date()){%>'.
-					'unexpired"'.
-				'<%}'.
-				'else{%>'.
-					'expired"'.	
-				'<%}%>'.	
-				'>'.
-					'<a href="edit/<%= record_id %>">'.
-						'<img src="<%= image_source %>"/>'.
-					'</a>'.
-				'</div>'.
-			'</script>'.
-			'<script type="text/javascript" src="'. $GLOBALS['base_url'] . '/js/homepage.js"></script>'.
-			'<script type="text/javascript">'.
-				'model.load(\''.json_encode($records) .'\');'.
-			'</script>';	
-			;
+			'</div>';
+		include('templates/image-template.temp');
+		$html .= '<script type="text/javascript" src="'. $GLOBALS['base_url'] . '/js/homepage.js"></script>'.
+			 '<script type="text/javascript">'.
+				'model.load(\''. json_encode($records) . '\');'.
+			 '</script>';	
+
 		return $html;
 	}
 
