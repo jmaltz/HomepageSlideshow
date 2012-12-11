@@ -31,8 +31,7 @@ class SlideshowModel {
 					'</div>'.
 				'</div>'.
 				'<div class="row">' .
-					'<ul id="images">'.	
-					'</ul>'.
+					'<div id="images"></div>'.
 				'</div>'.
 			'</div>';
 		include('templates/image-template.temp');
