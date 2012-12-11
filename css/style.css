@@ -1,53 +1,55 @@
 td {
 	vertical-align: middle;
 }
+
 .btn-edit {
 	margin-right: 10px;
 }
-
-.slideshow-submission-field{
-	float: left;
+.no-style {
+	list-style: none;
 }
-
-.gray-background{
+.gray-background {
 	background-color: #D8D8D8;
 	cursor: pointer;
 }
 
-#images{
+.slideshow-submission-field {
+	float: left;
+}
+
+.image-link {
+	color: black;
+	font-size: 12px;
+	float: left;
+	height: auto;
+	width: 35%;
+}
+.image-link:hover {
+	text-decoration: none;
+	color: black;
+}
+
+.information {
+	float: left;
+}
+.image-item > .thumbnail {
+	height: 100px;
+	margin-bottom: 10px;
+	overflow: auto;
+}
+#search-bar {
+	margin-bottom: 10px;
+}
+
+#images {
 	list-style: none;
 	margin: 0px 0px 10px 0px;
 }
 
-#images > li{
+#images > li {
 	margin: 10px 0px 10px 30px;
 	line-height: 30px;
 }
-
-#images > li .thumbnail{
-	height: 110px;
-	width: 375px;
-}
-
 #images > li .span2 {
 	margin-left: 10px;
-}
-
-ul .no-style{
-	list-style: none;
-}
-
-.image-thumbnail{
-	height: 110px;
-	width: 190px;
-}
-
-.image-link{
-	color: black;
-	font-size: 12px;
-}
-
-.image-link:hover{
-	text-decoration: none;
-	color: black;
 }
