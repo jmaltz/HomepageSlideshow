@@ -1,45 +1,32 @@
 <script type="text/template" id="image-template">
-		<div class="thumbnail row">
-		<a href = "edit/<%= record_id %>"  class="image-link">.
-			<span class="span2 "> 
-				<img src="<%= image_source %>" class="image-thumbnail"/>
-			</span>
-			<span class="information">
-				<ul class="no-style pull-left">
-					<li>
-						<strong>Featured:
-						<%= is_featured == "1" ? "yes" : "no" %>
-						</strong>
-					</li>
-					<li>
-						<strong>Active: 
-						<%= is_active == "1" ? "yes" : "no" %>
-						</strong>
-					</li>
-					<li>
-						<strong>Expires: 
-						<%
-							var d = new Date(Date.parse(expires));
-							var hours = d.getHours();
-							var isPm = 'AM';
-							if(hours > 12){
-								hours-=12;
-								isPm = 'PM';
-							}
-							else if (hours == 0){
-								hours = 12;
-							}
+<div class="thumbnail">
+	<a href = "edit/<%= record_id %>" class="image-link"><img src="<%= image_source %>" class="image-thumbnail"></a>
+	<div class="information">
+		<ul class="no-style pull-left">
+			<li><strong><%= title %></strong></li>
+			<li><%= is_featured == "1" ? "Featured" : "" %></li>
+			<li><%= is_active == "1" ? "Active" : "" %></li>
+			<li>Expires: 
+				<%
+					var d = new Date(Date.parse(expires));
+					var hours = d.getHours();
+					var isPm = 'AM';
+					if(hours > 12){
+						hours-=12;
+						isPm = 'PM';
+					}
+					else if (hours == 0){
+						hours = 12;
+					}
 
-							var formatted =d.getMonth() + "/" + d.getDate() + "/" + 
-									d.getFullYear() + " " + ("0" + hours).slice(-2) 													+ ":" + ("0" + d.getMinutes()).slice(-2) + " " + isPm;
+					var formatted = d.getMonth() + "/" + d.getDate() + "/" + 
+							d.getFullYear() + " " + ("0" + hours).slice(-2) + 
+							":" + ("0" + d.getMinutes()).slice(-2) + " " + isPm;
 
-						%>
-						<%= formatted %>
-						</strong>
-					</li>
-				</ul>
-			</span>
-
-		</a>
+				%>
+				<%= formatted %>
+			</li>
+		</ul>
 	</div>
+</div>
 </script>
