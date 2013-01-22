@@ -30,6 +30,8 @@ class SlideshowModel {
 						'<input type="text" class="pull-right span2 search-query" id="title-search" placeholder="Search title"/>'.
 					'</div>'.
 				'</div>'.
+				'<div id="no-results">'.
+				'</div>'.
 				'<div class="row">' .
 					'<div id="images"></div>'.
 				'</div>'.
@@ -153,7 +155,7 @@ class SlideshowModel {
 				'<input type="submit" class="btn" name="submit"';
 		if(isset($record["record_id"]))
 		{
-			$html .= 'value="Edit"';
+			$html .= 'value="Save"';
 		}
 		else
 		{

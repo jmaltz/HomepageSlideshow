@@ -143,8 +143,16 @@ var model = (function(){
 		},
 
 		filterSelected: function(imagesToAdd){
-			activeImages.reset();
-			activeImages.add(imagesToAdd);
+			if(imagesToAdd.length > 0){
+				$("#no-results").empty();
+				activeImages.reset();
+				activeImages.add(imagesToAdd);
+			}
+			else{
+				activeImages.reset();
+				$("#no-results").append("<strong>No Results Found</strong>");
+			}
+				
 		}
 
 	});

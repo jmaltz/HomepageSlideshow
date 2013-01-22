@@ -3,7 +3,7 @@
 	<a href = "edit/<%= record_id %>" class="image-link"><img src="<%= image_source %>" class="image-thumbnail"></a>
 	<div class="information">
 		<ul class="no-style pull-left">
-			<li><strong><%= title %></strong></li>
+			<li><strong><a href = "edit/<%= record_id %>" class="title-link"><%= title %></a></strong></li>
 			<li><%= is_featured == "1" ? "Featured" : "" %></li>
 			<li><%= is_active == "1" ? "Active" : "" %></li>
 			<li>Expires: 
@@ -18,8 +18,10 @@
 					else if (hours == 0){
 						hours = 12;
 					}
+					var months = ["Jan.", "Feb.", "Mar.", "Apr.", "May.", "Jun.", "Jul.", 
+							"Aug.", "Sep.", "Oct.", "Nov.", "Dec."];
 
-					var formatted = d.getMonth() + "/" + d.getDate() + "/" + 
+					var formatted = months[d.getMonth()] + " " + d.getDate() + ", " + 
 							d.getFullYear() + " " + ("0" + hours).slice(-2) + 
 							":" + ("0" + d.getMinutes()).slice(-2) + " " + isPm;
 

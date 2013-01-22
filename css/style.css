@@ -8,6 +8,7 @@ td {
 .no-style {
 	list-style: none;
 }
+
 .gray-background {
 	background-color: #D8D8D8;
 	cursor: pointer;
@@ -24,7 +25,17 @@ td {
 	height: auto;
 	width: 35%;
 }
+
 .image-link:hover {
+	text-decoration: none;
+	color: black;
+}
+
+.title-link {
+	color: black;
+}
+
+.title-link:hover{
 	text-decoration: none;
 	color: black;
 }
