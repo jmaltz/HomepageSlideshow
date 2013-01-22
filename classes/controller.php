@@ -84,7 +84,8 @@ class Controller {
 			
 			if($result === TRUE) //if the result is true, we just uploaded successfully
 			{
-				echo $view->display_record($this->db->get_record($params['s2']), NULL);
+				$records = $this->db->get();
+				header('Location: ' . $GLOBALS['base_url']);
 			}
 			else if(is_array($result)) //if its an array print all errors
 			{
