@@ -163,11 +163,24 @@ class SlideshowDatabase
 	}
 
 	public function get_visible()
-	{
+    {
+        $expires = date("Y-m-d H:i:s");
 		try
-		{
-			$query = $this->db->prepare("Select * FROM homepage_slideshow WHERE expires >= :expires AND is_active = 1");
-			$query->bindParam(":expires", date("Y-m-d H:i:s"));
+        {
+            // first try to get all featured images
+			$query = $this->db->prepare("Select * FROM homepage_slideshow WHERE expires >= :expires AND is_active = 1 AND is_featured = 1");
+            $query->bindParam(":expires", $expires);
+			$query->execute();
+
+            $results = $query->fetchAll();
+            // if there are any featured, just return them
+            if(count($results) > 0)
+            {
+                return $results;
+            }
+            
+            $query = $this->db->prepare("Select * FROM homepage_slideshow WHERE expires >= :expires AND is_active = 1");
+            $query->bindParam(":expires", $expires);
 			$query->execute();
 
 			return $query->fetchAll();

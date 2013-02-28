@@ -36,7 +36,6 @@ var model = (function(){
 
 		render: function(){
 			var html = this.template(this.model.toJSON());
-			console.log($("#image-template"));
 			this.$el.html(html);
 			return this;
 		}

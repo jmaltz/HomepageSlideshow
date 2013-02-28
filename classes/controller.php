@@ -152,5 +152,13 @@ class Controller {
 			echo $view->display_record(array(), NULL);
 		}
 
-	}
+    }
+
+    public function demo()
+    {
+        $records = $this->db->get_visible();
+        $view = new SlideshowModel();
+
+        echo $view->create_carousel($records); 
+    }
 }

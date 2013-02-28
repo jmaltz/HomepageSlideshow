@@ -168,6 +168,27 @@ class SlideshowModel {
 	;
 	
 	return $html;
-	}
+    }
+
+    public function create_carousel($records)
+    {
+        global $base_url; 
+
+        $html = '<div id="slideshow">';
+
+        // add each record to the html
+        foreach($records as $record)
+        {
+            $html .= '<img src="' . 
+                        $record['image_source'] .
+                        '" width="300px"' .
+                        'height="300px"' . 
+                        '/>';
+        }
+        $html .= '</div>' .
+            '<script type="text/javascript" src="' . $base_url . '/js/demo.js">' .
+            '</script>';
+        return $html;
+    }
 }
 ?>

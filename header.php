@@ -20,6 +20,7 @@ global $base_url;
 <script src="<?php echo $base_url ?>/js/json2.js" type="text/javascript"></script>
 <script src="<?php echo $base_url ?>/js/backbone.min.js" type="text/javascript"></script>
 <script src="<?php echo $base_url ?>/js/backbone-query.min.js" type="text/javascript"></script>
+<script src="<?php echo $base_url ?>/js/cycle.js" type="text/javascript"></script>
 
 
 <link href="<?php echo $base_url ?>/css/bootstrap.min.css" type="text/css" rel="stylesheet">
