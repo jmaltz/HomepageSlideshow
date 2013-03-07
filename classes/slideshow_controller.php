@@ -144,4 +144,3 @@ class Slideshow_Controller
 		return $move_result; //otherwise, return the new path to the file
 	}
 }
-	?>

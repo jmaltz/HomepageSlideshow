@@ -193,5 +193,3 @@ class SlideshowDatabase
 		return FALSE;
 	}
 }
-
-?>

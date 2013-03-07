@@ -93,5 +93,3 @@ class SlideshowUpload{
 		return rename($old_file_name, $new_file_name);
 	}
 }
-
-?>
