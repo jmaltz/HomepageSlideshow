@@ -1,14 +1,14 @@
 <?php
 
 // Base URL
-$base_url = 'http://getinvolved.dev/admin-upload';
+$base_url = '';
 
 $config['database'] =
 	array(
-		'host' => 'localhost',
-		'dbname' => 'getinvolved',
-		'username' => 'root',
-		'password' => 'password'
+		'host' => '',
+		'dbname' => '',
+		'username' => '',
+		'password' => ''
 	);
 
 ?>
