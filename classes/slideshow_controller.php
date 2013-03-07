@@ -11,7 +11,6 @@ class Slideshow_Controller
 				
 		$is_featured = 0;
 		$is_active = 0;
-		$link_to = "#";
 
 		if(isset($request["is_featured"])) //change is_featured from "on" to 1 if it is set
 		{
@@ -20,17 +19,6 @@ class Slideshow_Controller
 		if(isset($request["is_active"])) //change the is active field from "on" to 1
 		{
 			$is_active = 1;
-		}
-		if(isset($request["link_to"])) //if there is a link, include the http in front of it
-		{
-			if(strpos($request['link_to'], 'http://') === FALSE)
-			{
-				$link_to='http://' . $request['link_to'];
-			}
-			else
-			{
-				$link_to = $request['link_to'];
-			}
 		}
 		if(isset($request["expiration_time"])) //parse the time
 		{
@@ -44,7 +32,7 @@ class Slideshow_Controller
 				"title" => $request["title"],
 				"expires" => date('Y-m-d H:i:s', strtotime($request["expiration_date"] . ' ' . $request["expiration_time"])),
 				"image_alt_text" => $request["image_alt_text"],
-				"link_to" => $link_to 
+				"link_to" => $request["link_to"] 
 				);// compile the finished array
 
 
