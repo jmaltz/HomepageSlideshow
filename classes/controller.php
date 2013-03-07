@@ -117,8 +117,7 @@ class Controller {
 		if($_SERVER['REQUEST_METHOD'] === 'POST') //if we posted here then do the file upload
 		{
 			$files_array = $_FILES['upload_file'];
-			
-			
+
 			if($files_array['error'] !== 0)
 			{
 				echo $view->display_record(array(), 'There was an error uploading your file ' . Controller::$upload_errors[$files_array['error']]);
