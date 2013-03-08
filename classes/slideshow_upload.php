@@ -5,9 +5,11 @@ class SlideshowUpload{
 	private $base_path;
 	
 	public function __construct($file)
-	{	
-		$this->base_path = realpath(__DIR__) . '/../uploads/';
-		$this->relative_path = 'uploads/';
+	{
+	    $uri = '/images/uploads/slideshow/';
+        	
+		$this->base_path = APP_PATH . $uri;
+		$this->relative_path = $uri;
 
 		$this->file_handler = $file;
 	}
@@ -91,5 +93,3 @@ class SlideshowUpload{
 		return rename($old_file_name, $new_file_name);
 	}
 }
-
-?>

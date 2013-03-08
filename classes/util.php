@@ -68,5 +68,3 @@ function convert_datetime_to_date($datetime)
 	$split_date = split("-", $datetime);
 	return $split_date[1] . "-" . $split_date[2] . "-" . $split_date[0];
 }
-
-?>
