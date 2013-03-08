@@ -191,4 +191,3 @@ class SlideshowModel {
         return $html;
     }
 }
-?>
